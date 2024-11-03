@@ -1,0 +1,160 @@
+/* Reseteo básico y configuración para el cuerpo y html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Estilo para el encabezado */
+.header {
+    background-color: rgba(255, 0, 0, 0.849); /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+    text-align: center; /* Alineación del texto al centro */
+    position: fixed; /* Fijado para estar siempre en la parte superior */
+    top: 0; /* Alineado al borde superior */
+    left: 0;
+    width: 100%; /* Ancho completo de la ventana */
+    height: 80px; /* Altura del encabezado */
+    z-index: 1; /* Asegura que el encabezado esté por encima del video */
+}
+
+
+/* Estilo para el video de fondo */
+.video-background {
+    position: fixed; /* Fijado para estar siempre en el fondo */
+    top: 80px; /* Ajustado para comenzar debajo del encabezado */
+    left: 0;
+    width: 100%; /* Ancho completo de la ventana */
+    height: calc(100vh - 80px); /* Altura ajustada para ocupar el espacio restante */
+    overflow: hidden; /* Oculta el desbordamiento del video */
+    z-index: -1; /* Mantiene el video en el fondo */
+    background: rgb(0, 0, 0); /* Fondo negro semitransparente sobre el video */
+}
+
+/* Estilo para el video dentro del contenedor de fondo */
+.video-background video {
+    position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ancho completo del contenedor */
+    height: 100%; /* Altura completa del contenedor */
+    object-fit: cover; /* Ajusta el video para cubrir el área */
+    opacity: 0.7; /* Opacidad del video */
+}
+
+/* Otros estilos mantienen igual */
+
+/* Estilo para el contenedor de las cajas */
+.container {
+    position: absolute; /* Posicionamiento absoluto en la página */
+    top: 30%; /* Posición vertical ajustada para centrar las cajas */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal */
+    width: 90%; /* Ancho del contenedor */
+    display: flex; /* Usa flexbox para disposición de las cajas */
+    justify-content: space-evenly; /* Espacio igual entre las cajas */
+    gap: 10px; /* Espacio entre las cajas */
+    z-index: 2; /* Asegura que las cajas estén por encima del video */
+}
+
+/* Estilo para la fila de cajas */
+.row {
+    display: flex; /* Usa flexbox para disposición de las cajas */
+    justify-content: space-evenly; /* Espacio igual entre las cajas */
+    width: 100%; /* Ancho completo del contenedor */
+}
+
+/* Estilo para cada caja */
+.box {
+    border: 2px solid rgb(255, 0, 0); /* Borde de las cajas */
+    background-color: rgba(0, 0, 0, 0.356); /* Color de fondo con opacidad */
+    color: white; /* Color del texto dentro de la caja */
+    padding: 15px; /* Espacio interno de la caja */
+    border-radius: 5px; /* Bordes redondeados */
+    opacity: 0.9; /* Opacidad de la caja */
+    text-align: center; /* Alineación del texto al centro */
+    width: 400px; /* Ancho de la caja */
+    height: 450px; /* Altura de la caja */
+    box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
+    display: flex; /* Usa flexbox para el contenido interno */
+    flex-direction: column; /* Disposición vertical del contenido */
+    align-items: center; /* Alinea el contenido al centro horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+/* Estilo para las imágenes dentro de las cajas */
+.box img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+    max-height: 70%; /* Limita la altura máxima de la imagen */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+}
+
+/* Estilo para los párrafos dentro de las cajas */
+.box p {
+    margin: 0; /* Quita el margen alrededor del párrafo */
+    font-size: 1.2em; /* Tamaño de la fuente */
+}
+
+/* Consultas de medios para adaptar el diseño a diferentes resoluciones */
+
+/* Dispositivos con pantallas pequeñas, como móviles */
+@media (max-width: 768px) {
+    .header {
+        height: 60px; /* Reducido el alto del encabezado en pantallas pequeñas */
+    }
+
+    .video-background {
+        top: 60px; /* Ajustado el video para que comience debajo del encabezado reducido */
+        height: calc(100vh - 60px); /* Ajustado para ocupar el espacio restante */
+    }
+
+    .container {
+        top: 40%; /* Ajustado el contenedor de cajas para pantallas más pequeñas */
+        gap: 5px; /* Reducido el espacio entre cajas */
+    }
+
+    .box {
+        width: 300px; /* Reducido el ancho de las cajas */
+        height: 350px; /* Reducido la altura de las cajas */
+    }
+
+    .box img {
+        max-height: 60%; /* Ajustado la altura máxima de la imagen */
+    }
+
+    .box p {
+        font-size: 1em; /* Reducido el tamaño de la fuente en pantallas pequeñas */
+    }
+}
+
+/* Dispositivos con pantallas medianas, como tabletas */
+@media (max-width: 1024px) {
+    .header {
+        height: 70px; /* Ajustado el alto del encabezado para tabletas */
+    }
+
+    .video-background {
+        top: 70px; /* Ajustado el video para que comience debajo del encabezado */
+        height: calc(100vh - 70px); /* Ajustado para ocupar el espacio restante */
+    }
+
+    .container {
+        top: 35%; /* Ajustado el contenedor de cajas para tabletas */
+        gap: 10px; /* Ajustado el espacio entre cajas */
+    }
+
+    .box {
+        width: 350px; /* Ajustado el ancho de las cajas */
+        height: 400px; /* Ajustado la altura de las cajas */
+    }
+
+    .box img {
+        max-height: 65%; /* Ajustado la altura máxima de la imagen */
+    }
+
+    .box p {
+        font-size: 1.1em; /* Ajustado el tamaño de la fuente para tabletas */
+    }
+}
