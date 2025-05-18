@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Instala dependencias
-RUN pip install --no-cache-dir -r requeriments.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Expone el puerto que usará Django
 EXPOSE 8000
 
-# Comando por defecto (puedes ajustar según tu proyecto)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Comando por defecto
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

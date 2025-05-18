@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Encabezado -->
+    <div class="header">
+        <h1>Hola Mundo - Mi Aplicación Django</h1>
+    </div>
+
+    <!-- Video de fondo -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline preload="auto">
+            <source src="{% static 'video/background.mp4' %}" type="video/mp4">
+            <!-- Fallback para navegadores que no soportan video -->
+            <div class="video-fallback">
+                <p>Tu navegador no soporta videos HTML5.</p>
+            </div>
+        </video>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <img src="{% static 'img/imagen1.jpeg' %}" alt="Imagen 1">
+                <p>Descripción de la primera imagen</p>
+            </div>
+            <div class="box">
+                <img src="{% static 'img/imagen2.jpeg' %}" alt="Imagen 2">
+                <p>Descripción de la segunda imagen</p>
+            </div>
+            <div class="box">
+                <img src="{% static 'img/imagen3.jpeg' %}" alt="Imagen 3">
+                <p>Descripción de la tercera imagen</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
