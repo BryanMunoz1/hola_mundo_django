@@ -19,7 +19,7 @@
             <source src="{% static 'video/background.mp4' %}" type="video/mp4">
             <!-- Fallback para navegadores que no soportan video -->
             <div class="video-fallback">
-                <p>Tu navegador no soporta videos HTML5.</p>
+                <p>Cargando contenido...</p>
             </div>
         </video>
     </div>
@@ -29,17 +29,48 @@
         <div class="row">
             <div class="box">
                 <img src="{% static 'img/imagen1.jpeg' %}" alt="Imagen 1">
-                <p>Descripción de la primera imagen</p>
+                <p>Primera sección de contenido</p>
             </div>
             <div class="box">
                 <img src="{% static 'img/imagen2.jpeg' %}" alt="Imagen 2">
-                <p>Descripción de la segunda imagen</p>
+                <p>Segunda sección de contenido</p>
             </div>
             <div class="box">
                 <img src="{% static 'img/imagen3.jpeg' %}" alt="Imagen 3">
-                <p>Descripción de la tercera imagen</p>
+                <p>Tercera sección de contenido</p>
             </div>
         </div>
     </div>
+
+    <!-- Script para debug del video -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-background video');
+            const fallback = document.querySelector('.video-fallback');
+            
+            if (video) {
+                video.addEventListener('loadeddata', function() {
+                    console.log('Video cargado correctamente');
+                    fallback.style.display = 'none';
+                });
+                
+                video.addEventListener('error', function(e) {
+                    console.error('Error cargando video:', e);
+                    fallback.innerHTML = '<p>No se pudo cargar el video de fondo</p>';
+                    fallback.style.display = 'block';
+                });
+
+                // Verificar si el video se está reproduciendo
+                setTimeout(function() {
+                    if (video.paused) {
+                        console.log('Intentando reproducir video...');
+                        video.play().catch(function(error) {
+                            console.log('Error al reproducir:', error);
+                        });
+                    }
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
