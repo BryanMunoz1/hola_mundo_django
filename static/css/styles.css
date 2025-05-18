@@ -1,160 +1,220 @@
-/* Reseteo básico y configuración para el cuerpo y html */
-html, body {
+/* Reseteo completo para una mejor consistencia entre navegadores */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
     height: 100%;
-    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
 }
 
 /* Estilo para el encabezado */
 .header {
-    background-color: rgba(255, 0, 0, 0.849); /* Color de fondo del encabezado */
-    color: white; /* Color del texto del encabezado */
-    text-align: center; /* Alineación del texto al centro */
-    position: fixed; /* Fijado para estar siempre en la parte superior */
-    top: 0; /* Alineado al borde superior */
-    left: 0;
-    width: 100%; /* Ancho completo de la ventana */
-    height: 80px; /* Altura del encabezado */
-    z-index: 1; /* Asegura que el encabezado esté por encima del video */
-}
-
-
-/* Estilo para el video de fondo */
-.video-background {
-    position: fixed; /* Fijado para estar siempre en el fondo */
-    top: 80px; /* Ajustado para comenzar debajo del encabezado */
-    left: 0;
-    width: 100%; /* Ancho completo de la ventana */
-    height: calc(100vh - 80px); /* Altura ajustada para ocupar el espacio restante */
-    overflow: hidden; /* Oculta el desbordamiento del video */
-    z-index: -1; /* Mantiene el video en el fondo */
-    background: rgb(0, 0, 0); /* Fondo negro semitransparente sobre el video */
-}
-
-/* Estilo para el video dentro del contenedor de fondo */
-.video-background video {
-    position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+    background: linear-gradient(to right, #d32f2f, #f44336);
+    color: white;
+    text-align: center;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Ancho completo del contenedor */
-    height: 100%; /* Altura completa del contenedor */
-    object-fit: cover; /* Ajusta el video para cubrir el área */
-    opacity: 0.7; /* Opacidad del video */
+    width: 100%;
+    height: 80px;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Otros estilos mantienen igual */
+.header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para el video de fondo con overlay negro */
+.video-background {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay negro con opacidad 0.7 */
+    z-index: 1;
+}
+
+.video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Estilo para el contenedor de las cajas */
 .container {
-    position: absolute; /* Posicionamiento absoluto en la página */
-    top: 30%; /* Posición vertical ajustada para centrar las cajas */
+    position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%); /* Centrado horizontal */
-    width: 90%; /* Ancho del contenedor */
-    display: flex; /* Usa flexbox para disposición de las cajas */
-    justify-content: space-evenly; /* Espacio igual entre las cajas */
-    gap: 10px; /* Espacio entre las cajas */
-    z-index: 2; /* Asegura que las cajas estén por encima del video */
+    transform: translate(-50%, -40%);
+    width: 90%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 5;
+    margin-top: 30px;
 }
 
-/* Estilo para la fila de cajas */
 .row {
-    display: flex; /* Usa flexbox para disposición de las cajas */
-    justify-content: space-evenly; /* Espacio igual entre las cajas */
-    width: 100%; /* Ancho completo del contenedor */
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
-/* Estilo para cada caja */
+/* Estilo para cada caja con efectos modernos */
 .box {
-    border: 2px solid rgb(255, 0, 0); /* Borde de las cajas */
-    background-color: rgba(0, 0, 0, 0.356); /* Color de fondo con opacidad */
-    color: white; /* Color del texto dentro de la caja */
-    padding: 15px; /* Espacio interno de la caja */
-    border-radius: 5px; /* Bordes redondeados */
-    opacity: 0.9; /* Opacidad de la caja */
-    text-align: center; /* Alineación del texto al centro */
-    width: 400px; /* Ancho de la caja */
-    height: 450px; /* Altura de la caja */
-    box-sizing: border-box; /* Incluye el padding y borde en el tamaño total */
-    display: flex; /* Usa flexbox para el contenido interno */
-    flex-direction: column; /* Disposición vertical del contenido */
-    align-items: center; /* Alinea el contenido al centro horizontalmente */
-    justify-content: center; /* Centra el contenido verticalmente */
+    background: rgba(20, 20, 20, 0.8);
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+    width: 350px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 50, 50, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 50, 50, 0.8);
 }
 
 /* Estilo para las imágenes dentro de las cajas */
 .box img {
-    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
-    max-height: 70%; /* Limita la altura máxima de la imagen */
-    height: auto; /* Mantiene la relación de aspecto */
-    margin-bottom: 10px; /* Espacio debajo de la imagen */
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.box:hover img {
+    transform: scale(1.03);
 }
 
 /* Estilo para los párrafos dentro de las cajas */
 .box p {
-    margin: 0; /* Quita el margen alrededor del párrafo */
-    font-size: 1.2em; /* Tamaño de la fuente */
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #f1f1f1;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+/* Estilo para el fallback del video */
+.video-fallback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+    color: #fff;
+    font-size: 1.2rem;
 }
 
 /* Consultas de medios para adaptar el diseño a diferentes resoluciones */
 
-/* Dispositivos con pantallas pequeñas, como móviles */
-@media (max-width: 768px) {
-    .header {
-        height: 60px; /* Reducido el alto del encabezado en pantallas pequeñas */
+/* Dispositivos con pantallas medianas, como tabletas */
+@media (max-width: 1200px) {
+    .row {
+        gap: 20px;
     }
-
-    .video-background {
-        top: 60px; /* Ajustado el video para que comience debajo del encabezado reducido */
-        height: calc(100vh - 60px); /* Ajustado para ocupar el espacio restante */
-    }
-
-    .container {
-        top: 40%; /* Ajustado el contenedor de cajas para pantallas más pequeñas */
-        gap: 5px; /* Reducido el espacio entre cajas */
-    }
-
+    
     .box {
-        width: 300px; /* Reducido el ancho de las cajas */
-        height: 350px; /* Reducido la altura de las cajas */
-    }
-
-    .box img {
-        max-height: 60%; /* Ajustado la altura máxima de la imagen */
-    }
-
-    .box p {
-        font-size: 1em; /* Reducido el tamaño de la fuente en pantallas pequeñas */
+        width: 320px;
+        height: 380px;
     }
 }
 
-/* Dispositivos con pantallas medianas, como tabletas */
-@media (max-width: 1024px) {
+/* Dispositivos con pantallas pequeñas, como móviles */
+@media (max-width: 768px) {
     .header {
-        height: 70px; /* Ajustado el alto del encabezado para tabletas */
+        height: 60px;
+    }
+    
+    .header h1 {
+        font-size: 1.4rem;
     }
 
     .video-background {
-        top: 70px; /* Ajustado el video para que comience debajo del encabezado */
-        height: calc(100vh - 70px); /* Ajustado para ocupar el espacio restante */
+        top: 60px;
+        height: calc(100vh - 60px);
     }
 
     .container {
-        top: 35%; /* Ajustado el contenedor de cajas para tabletas */
-        gap: 10px; /* Ajustado el espacio entre cajas */
+        transform: translate(-50%, -30%);
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
     }
 
     .box {
-        width: 350px; /* Ajustado el ancho de las cajas */
-        height: 400px; /* Ajustado la altura de las cajas */
+        width: 85%;
+        max-width: 300px;
+        height: 360px;
+        padding: 15px;
     }
-
-    .box img {
-        max-height: 65%; /* Ajustado la altura máxima de la imagen */
-    }
-
+    
     .box p {
-        font-size: 1.1em; /* Ajustado el tamaño de la fuente para tabletas */
+        font-size: 1.1rem;
+    }
+}
+
+/* Para dispositivos muy pequeños */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+    
+    .box {
+        width: 95%;
+        height: 340px;
+    }
+    
+    .box p {
+        font-size: 1rem;
     }
 }
